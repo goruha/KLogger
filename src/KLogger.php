@@ -182,6 +182,7 @@ class KLogger
         }
 
         if (($this->_fileHandle = fopen($this->_logFilePath, 'a')) && is_resource($this->_fileHandle)) {
+            chmod($this->_logFilePath, self::$_defaultPermissions);
             $this->_logStatus = self::STATUS_LOG_OPEN;
             $this->_messageQueue[] = $this->_messages['opensuccess'];
         } else {
